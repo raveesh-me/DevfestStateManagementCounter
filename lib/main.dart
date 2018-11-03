@@ -1,35 +1,51 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  final String appName = 'State Management';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appName,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(appName),
-        ),
-        body: Center(
-          child: FlatButton(
-            child: Text(
-              'All the best for a perfect Session, \nJai Maata Di',
-              style:
-                  Theme.of(context).textTheme.display4.copyWith(fontSize: 30.0),
-            ),
-            onPressed: () {
-              //TODO 01 :
-//              sayHi(context);
-            },
-          ),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _counter;
+
+  @override
+  void initState() {
+    super.initState();
+    _counter = 0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            //TODO 1:  Counter andar bahar && upar neeche
+          });
+
+          _counter++;
+        },
+        child: Icon(Icons.add),
+      ),
+      body: Center(
+        child: Text(
+          '$_counter',
+          style: Theme.of(context).textTheme.display3,
         ),
       ),
     );
-  }
-
-  sayHi(BuildContext context) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text('Hi!')));
   }
 }
